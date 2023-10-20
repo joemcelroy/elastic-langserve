@@ -5,9 +5,13 @@ if __name__ == "__main__":
         "What is the nasa sales team?",
         "What is our work from home policy?",
         "Does the company own my personal project?",
-        "What job openings do we have?",
         "How does compensation work?",
     ]
 
-    response = chain.invoke(questions[1])
+    response = chain.invoke(
+        {
+            "question": questions[3],
+            "chat_history": [],
+        }
+    )
     print(response)
