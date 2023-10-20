@@ -1,17 +1,22 @@
 [tool.poetry]
-name = "cove"
+name = "elastic-rag-workplace"
 version = "0.0.1"
 description = ""
-authors = ["Harrison Chase <harrison@langchain.dev>"]
+authors = ["Joe McElroy <joseph.mcelroy@elastic.co>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
 langchain = ">=0.0.313"
 openai = "^0.28.1"
+elasticsearch = "^8.10.0"
+sentence-transformers = "^2.2.2"
+jq = "^1.6.0"
+gpt4all = "^2.0.0"
+tiktoken = "^0.5.1"
 
 [tool.langserve]
-export_module = "cove"
+export_module = "elastic_rag_workplace"
 export_attr = "chain"
 
 
