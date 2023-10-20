@@ -26,12 +26,12 @@ retriever = vectorstore.as_retriever()
 # Set up LLM to user
 llm = ChatOpenAI(temperature=0)
 
-_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question, in its original language.
+_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question, in its original language. If there is no chat history, just rephrase the question to be a standalone question.
 
 Chat History:
 {chat_history}
 Follow Up Input: {question}
-Standalone question:"""
+"""
 CONDENSE_QUESTION_PROMPT = PromptTemplate.from_template(_template)
 
 template = """
@@ -85,8 +85,8 @@ _inputs = RunnableMap(
 )
 
 _context = {
-    "context": itemgetter("question") | retriever | _combine_documents,
-    "question": lambda x: x["question"],
+    "context": itemgetter("standalone_question") | retriever | _combine_documents,
+    "question": lambda x: x["standalone_question"],
 }
 
-chain = _context | prompt | llm | StrOutputParser()
+chain = _inputs | _context | prompt | llm | StrOutputParser()

@@ -1,7 +1,3 @@
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema.output_parser import StrOutputParser
-from langchain.schema.runnable import RunnablePassthrough, RunnableParallel
 from langchain.document_loaders import JSONLoader
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores.elasticsearch import ElasticsearchStore
