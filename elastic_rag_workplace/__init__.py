@@ -4,14 +4,9 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough, RunnableParallel, RunnableMap
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores.elasticsearch import ElasticsearchStore
-from langchain.memory import ElasticsearchChatMessageHistory
 from langchain.schema import format_document
 from typing import Tuple, List
 from operator import itemgetter
-
-message_history = ElasticsearchChatMessageHistory(
-    es_url="http://localhost:9200", index="workplace-msg-history", session_id="test"
-)
 
 # Setup connecting to Elasticsearch
 vectorstore = ElasticsearchStore(
